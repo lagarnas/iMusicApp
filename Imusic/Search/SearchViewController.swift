@@ -25,6 +25,7 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
   private var timer: Timer?
   
   private lazy var footerView = FooterView()
+  weak var tabBarDelegate: MainTabBarControllerDelegate?
   
   // MARK: Setup
   
@@ -122,16 +123,18 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
     let cellViewModel = searchViewModel.cells[indexPath.row]
-            let window = UIApplication.shared.connectedScenes.filter({$0.activationState == .foregroundActive})
-            .map({$0 as? UIWindowScene})
-            .compactMap({$0})
-            .first?.windows
-            .filter({$0.isKeyWindow}).first
+//    let window = UIApplication.shared.connectedScenes.filter({$0.activationState == .foregroundActive})
+//      .map({$0 as? UIWindowScene})
+//      .compactMap({$0})
+//      .first?.windows
+//      .filter({$0.isKeyWindow}).first
+//
+//    let trackDetailsView: TrackDetailView = TrackDetailView.loadFromNib()
+//    trackDetailsView.configure(viewModel: cellViewModel)
+//    trackDetailsView.delegate = self
+//    window?.addSubview(trackDetailsView)
+    self.tabBarDelegate?.maximizeTrackDetailController(viewModel: cellViewModel)
     
-    let trackDetailsView = Bundle.main.loadNibNamed("TrackDetailView", owner: self, options: nil)?.first as! TrackDetailView
-    trackDetailsView.configure(viewModel: cellViewModel)
-    trackDetailsView.delegate = self
-    window?.addSubview(trackDetailsView)
   }
   
 }
