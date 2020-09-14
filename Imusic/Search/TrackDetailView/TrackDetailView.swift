@@ -12,6 +12,11 @@ import SDWebImage
 import AVKit
 //import MarqueeLabel
 
+protocol TrackMovingDelegate: class {
+  func moveBackForPreviousTrack() -> SearchViewModel.Cell?
+  func moveForwardForNextTrack() -> SearchViewModel.Cell?
+}
+
 class TrackDetailView: UIView {
   
   // MARK: - @IBOutlet
@@ -30,6 +35,8 @@ class TrackDetailView: UIView {
     avPlayer.automaticallyWaitsToMinimizeStalling = false
     return avPlayer
   }()
+  
+  weak var delegate: TrackMovingDelegate?
   
   // MARK: - awakeFromNib()
   override func awakeFromNib() {
@@ -149,9 +156,15 @@ class TrackDetailView: UIView {
   }
   
   @IBAction func previousTrackTapped(_ sender: UIButton) {
+    let cellViewModel = delegate?.moveBackForPreviousTrack()
+    guard let cellInfo = cellViewModel else { return }
+    self.configure(viewModel: cellInfo)
   }
   
   @IBAction func nextTrackTapped(_ sender: UIButton) {
+    let cellViewModel = delegate?.moveForwardForNextTrack()
+    guard let cellInfo = cellViewModel else { return }
+    self.configure(viewModel: cellInfo)
   }
   
   @IBAction func playPauseTapped(_ sender: UIButton) {
