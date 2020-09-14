@@ -72,6 +72,7 @@ extension MainTabBarController: MainTabBarControllerDelegate {
     maximizedTopAnchorConstraint.isActive = true
     maximizedTopAnchorConstraint.constant = 0
     bottomAnchorConstraint.constant = 0
+    
     UIView.animate(withDuration: 0.5,
                    delay: 0,
                    usingSpringWithDamping: 0.7,
