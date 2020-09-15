@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 class MainTabBarController: UITabBarController {
   
@@ -29,9 +30,15 @@ class MainTabBarController: UITabBarController {
     
     searchVC.tabBarDelegate = self
     
+    let library = Library()
+    let hostVC = UIHostingController(rootView: library)
+    hostVC.tabBarItem.image = #imageLiteral(resourceName: "library")
+    hostVC.tabBarItem.title = "Library"
+    
     viewControllers = [
-      generateViewController(rootViewController: searchVC, image: UIImage(systemName: "magnifyingglass")!, title: "Search"),
-      generateViewController(rootViewController: LibraryViewController(), image: UIImage(systemName: "heart.fill")!, title: "Library")
+      hostVC,
+      generateViewController(rootViewController: searchVC, image: UIImage(systemName: "magnifyingglass")!, title: "Search")
+//      generateViewController(rootViewController: hostVC, image: UIImage(systemName: "heart.fill")!, title: "Library")
     ]
   }
   
