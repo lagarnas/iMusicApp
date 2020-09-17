@@ -8,7 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="93" id="Azq-ux-UOc" customClass="TrackCell" customModule="Imusic" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="93" id="Azq-ux-UOc" customClass="TrackCell" customModule="Imusic" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="419" height="84"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Azq-ux-UOc" id="6Wm-rP-gMd">
@@ -40,9 +40,19 @@
                         <color key="textColor" red="0.4941176471" green="0.4941176471" blue="0.52156862749999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FM5-vX-jyu">
+                        <rect key="frame" x="379" y="34" width="16" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <color key="tintColor" red="0.9154478908" green="0.2316905558" blue="0.41960936780000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <state key="normal" image="Add"/>
+                        <connections>
+                            <action selector="addTrackAction:" destination="Azq-ux-UOc" eventType="touchUpInside" id="BmZ-Lc-hfA"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="addTrackButton" destination="FM5-vX-jyu" id="ihn-yt-wRF"/>
                 <outlet property="artistNameLabel" destination="H7v-M7-t4E" id="hdZ-gL-Tvj"/>
                 <outlet property="collectionNameLabel" destination="GQV-fd-rpk" id="h7g-1R-6Xg"/>
                 <outlet property="iconImageView" destination="vrc-zt-m2i" id="v43-Lg-cK1"/>
@@ -51,4 +61,7 @@
             <point key="canvasLocation" x="-183.33333333333334" y="-40.178571428571423"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="Add" width="16" height="16"/>
+    </resources>
 </document>
